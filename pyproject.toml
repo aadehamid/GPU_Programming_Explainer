@@ -1,0 +1,18 @@
+[project]
+name = "gpu-programming-explainer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.4.0",
+    "marimo>=0.16.0",
+    "modal>=1.1.4",
+    "polars>=1.33.1",
+]
+
+[dependency-groups]
+dev = [
+    "rich>=14.1.0",
+    "ty>=0.0.1a21",
+]
