@@ -1,0 +1,1 @@
+/Users/hamidadesokan/Dropbox/2_Skill_Development/mojo/CUDA_StarterKit/sync_to_lambda.sh
