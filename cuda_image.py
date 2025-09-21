@@ -8,7 +8,8 @@ import modal
 # %%
 # Image definitions
 
-cuda_version = "12.8.1"  # should be no greater than host CUDA version
+# cuda_version = "12.8.1"  # should be no greater than host CUDA version
+cuda_version = "13.0.0"
 flavor = "devel"  # includes full CUDA toolkit
 operating_sys = "ubuntu24.04"
 tag = f"{cuda_version}-{flavor}-{operating_sys}"
@@ -29,6 +30,9 @@ image = (
         "--index-url https://dl.modular.com/public/nightly/python/simple/ "
         "--prerelease allow'"
     )
+    .pip_install("cuda-python")
+    .pip_install("cutile")
+    .pip_install("cutile-python")
     # .apt_install("libopenmpi-dev")  # required for tensorrt
     # .pip_install("tensorrt-llm==0.19.0", "pynvml", extra_index_url="https://pypi.nvidia.com")
     # .pip_install("hf-transfer", "huggingface_hub[hf_xet]")
