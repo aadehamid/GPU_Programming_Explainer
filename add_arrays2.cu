@@ -1,58 +1,68 @@
-//Declare required CUDA headers
+// This program demonstrates vector addition using CUDA on the GPU.
+// It adds two arrays element-wise in parallel on the GPU and retrieves the result on the CPU.
+// Each step is commented for educational clarity.
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
 // C++ specific headers
 #include <iostream>
 
-// Function declarations
+// CUDA kernel function to add two arrays element-wise
+// Each thread computes one element of the result array
 __global__ void vectorized(int a[], int b[], int c[], size_t size){
+    // Calculate the global index for this thread
     int i = threadIdx.x + blockIdx.x * blockDim.x;
 
+    // Make sure we don't go out of bounds
     if (i < size){
-    c[i] = a[i] + b[i];
+        // Perform the addition for element i
+        c[i] = a[i] + b[i];
     }
-return;
 }
 
 int main(){
+    // Number of elements in our arrays
     size_t size = 4;
-    int a[size]{1,2,3,4};
-    int b[size]{5,6,7,8};
-    int c[size]{0};
 
-    // Set up pointers to hold memory on GPU
+    // Host arrays (CPU memory)
+    int a[size]{1,2,3,4}; // First input array
+    int b[size]{5,6,7,8}; // Second input array
+    int c[size]{0};       // Output array to hold results
+
+    // Device pointers (GPU memory)
     int* cuda_a = nullptr;
     int* cuda_b = nullptr;
     int* cuda_c = nullptr;
 
-    // Allocate the memory on GPU
+    // Allocate memory on the GPU for each array
     cudaMalloc(&cuda_a, sizeof(int) * size);
-    cudaMaloc(&cuda_b, sizeof(int) * size);
+    cudaMalloc(&cuda_b, sizeof(int) * size);
     cudaMalloc(&cuda_c, sizeof(int) * size);
 
-    // Move data from HOST to DEVICE
-    cudaMemcpy(cuda_a, a, sizeof(a), cudaMemcpyHostToDevice)
-    cudaMemcpy(cuda_b, sizeof(b), cudaMemcpyHostToDevice);
+    // Copy input data from CPU (host) to GPU (device)
+    cudaMemcpy(cuda_a, a, sizeof(int) * size, cudaMemcpyHostToDevice);
+    cudaMemcpy(cuda_b, b, sizeof(int) * size, cudaMemcpyHostToDevice);
 
+    // Launch the CUDA kernel with one block of 'size' threads
+    // Each thread will compute one element of the output array
+    vectorized<<<1, size>>>(cuda_a, cuda_b, cuda_c, size);
+    cudaDeviceSynchronize(); // Wait for GPU to finish
 
-    // Call the function on GPU
-    vectorized<<<1, sizeof(a)/sizeof(int)>>>(cuda_a, cuda_b, cuda_c, size);
-    cudaDeviceSynchronize();
+    // Copy the result from GPU back to CPU
+    cudaMemcpy(c, cuda_c, sizeof(int) * size, cudaMemcpyDeviceToHost);
 
-    // Move data from GPU to CPU
-    cudaMemcpy(c, cuda_c, sizeof(c), cudaMemcpyDeviceToHost);
-
-    // Print the result
+    // Print the result array
+    std::cout << "Result of vector addition: ";
     for (size_t i{0}; i < size; i++){
-
-    std::cout<< c[i] << "  ";
+        std::cout << c[i] << "  ";
     }
+    std::cout << std::endl;
 
-    // Free GPU Memory
+    // Free the GPU memory
     cudaFree(cuda_a);
     cudaFree(cuda_b);
     cudaFree(cuda_c);
 
+    return 0;
 
 }
