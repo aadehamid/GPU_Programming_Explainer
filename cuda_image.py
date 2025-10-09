@@ -4,6 +4,11 @@ __generated_with = "0.16.0"
 # %%
 # import marimo as mo
 import modal
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+GITHUB_TOKEN=os.getenv("GITHUB_TOKEN")
 
 # %%
 # Image definitions
@@ -28,8 +33,14 @@ image = (
         "export PATH=$HOME/.local/bin:$PATH && "
         "uv pip install --system mojo "
         "--index-url https://dl.modular.com/public/nightly/python/simple/ "
-        "--prerelease allow'"
-    )
+        "--prerelease allow' &&"
+        "rm -rf /root/GPU_Programming_Explainer &&"
+        "git clone https://github.com/aadehamid/GPU_Programming_Explainer.git /root/GPU_Programming_Explainer &&"
+        "cd /root/GPU_Programming_Explainer &&"
+        f"git remote set-url origin https://${GITHUB_TOKEN}@github.com/aadehamid/GPU_Programming_Explainer.git &&"
+        "git config --global user.name 'aadehamid' &&"
+        "git config --global user.email 'aadehamid@gmail.com'")
+
     .pip_install("cuda-python")
     .pip_install("cutile")
     .pip_install("cutile-python")
@@ -37,7 +48,7 @@ image = (
     # .pip_install("tensorrt-llm==0.19.0", "pynvml", extra_index_url="https://pypi.nvidia.com")
     # .pip_install("hf-transfer", "huggingface_hub[hf_xet]")
     # .env({"HF_HUB_CACHE": HF_CACHE_PATH, "HF_HUB_ENABLE_HF_TRANSFER": "1", "PMIX_MCA_gds": "hash"})
-    .add_local_dir(".", remote_path="/root/GPU_Programming_Explainer", copy=True)
+    # .add_local_dir(".", remote_path="/root/GPU_Programming_Explainer", copy=True)
 )
 
 
