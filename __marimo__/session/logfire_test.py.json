@@ -1,0 +1,153 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.16.0"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "c2ba4c91a4adff26b0bad7ee9c9eb5b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "4737821c8b3ca9c51c7d1036fe1808a9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>&lt;logfire._internal.main.Logfire object at 0x108197b60&gt;</pre>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Logfire project URL: \nhttps://logfire-us.pydantic.dev/aadehamid/base-project\n"
+        }
+      ]
+    },
+    {
+      "id": "vblA",
+      "code_hash": "5ac3db1430b37c6a02342b401dd4f0e4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "23:15:38.413 nested\n23:15:38.414   Hello from Marimo!\n"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "67ecb5dde3b06014f2589c6f61af31fe",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "a7af5c95a508d1317d9c5af69723dc28",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-0' random-id='b857d0c7-edd1-b8ff-ace4-f349578dfdcb'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;ARS&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Argentina&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.5,&#92;&quot;dollar_ex&#92;&quot;:1.0,&#92;&quot;dollar_price&#92;&quot;:2.5},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;AUD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Australia&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.59,&#92;&quot;dollar_ex&#92;&quot;:1.68,&#92;&quot;dollar_price&#92;&quot;:1.5416666666666698},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;BRL&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Brazil&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.95,&#92;&quot;dollar_ex&#92;&quot;:1.79,&#92;&quot;dollar_price&#92;&quot;:1.64804469273743},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CAD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Canada&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.85,&#92;&quot;dollar_ex&#92;&quot;:1.47,&#92;&quot;dollar_price&#92;&quot;:1.93877551020408},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CHF&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Switzerland&#92;&quot;,&#92;&quot;local_price&#92;&quot;:5.9,&#92;&quot;dollar_ex&#92;&quot;:1.7,&#92;&quot;dollar_price&#92;&quot;:3.4705882352941204},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CLP&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Chile&#92;&quot;,&#92;&quot;local_price&#92;&quot;:1260.0,&#92;&quot;dollar_ex&#92;&quot;:514.0,&#92;&quot;dollar_price&#92;&quot;:2.45136186770428},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CNY&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;China&#92;&quot;,&#92;&quot;local_price&#92;&quot;:9.9,&#92;&quot;dollar_ex&#92;&quot;:8.28,&#92;&quot;dollar_price&#92;&quot;:1.19565217391304},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CZK&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Czech Republic&#92;&quot;,&#92;&quot;local_price&#92;&quot;:54.37,&#92;&quot;dollar_ex&#92;&quot;:39.1,&#92;&quot;dollar_price&#92;&quot;:1.39053708439898},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;DKK&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Denmark&#92;&quot;,&#92;&quot;local_price&#92;&quot;:24.75,&#92;&quot;dollar_ex&#92;&quot;:8.04,&#92;&quot;dollar_price&#92;&quot;:3.07835820895522},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;EUR&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Euro area&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.56,&#92;&quot;dollar_ex&#92;&quot;:1.075268817,&#92;&quot;dollar_price&#92;&quot;:2.38080000045235},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;GBP&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Britain&#92;&quot;,&#92;&quot;local_price&#92;&quot;:1.9,&#92;&quot;dollar_ex&#92;&quot;:0.632911392,&#92;&quot;dollar_price&#92;&quot;:3.0020000019212802},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;HKD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Hong Kong&#92;&quot;,&#92;&quot;local_price&#92;&quot;:10.2,&#92;&quot;dollar_ex&#92;&quot;:7.79,&#92;&quot;dollar_price&#92;&quot;:1.30937098844673},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;HUF&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Hungary&#92;&quot;,&#92;&quot;local_price&#92;&quot;:339.0,&#92;&quot;dollar_ex&#92;&quot;:279.0,&#92;&quot;dollar_price&#92;&quot;:1.21505376344086},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;IDR&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Indonesia&#92;&quot;,&#92;&quot;local_price&#92;&quot;:14500.0,&#92;&quot;dollar_ex&#92;&quot;:7945.0,&#92;&quot;dollar_price&#92;&quot;:1.82504719949654},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;ILS&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Israel&#92;&quot;,&#92;&quot;local_price&#92;&quot;:14.5,&#92;&quot;dollar_ex&#92;&quot;:4.05,&#92;&quot;dollar_price&#92;&quot;:3.58024691358025},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;JPY&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Japan&#92;&quot;,&#92;&quot;local_price&#92;&quot;:294.0,&#92;&quot;dollar_ex&#92;&quot;:106.0,&#92;&quot;dollar_price&#92;&quot;:2.77358490566038},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;KRW&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;South Korea&#92;&quot;,&#92;&quot;local_price&#92;&quot;:3000.0,&#92;&quot;dollar_ex&#92;&quot;:1108.0,&#92;&quot;dollar_price&#92;&quot;:2.70758122743682},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;MXN&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Mexico&#92;&quot;,&#92;&quot;local_price&#92;&quot;:20.9,&#92;&quot;dollar_ex&#92;&quot;:9.41,&#92;&quot;dollar_price&#92;&quot;:2.2210414452709903},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;MYR&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Malaysia&#92;&quot;,&#92;&quot;local_price&#92;&quot;:4.52,&#92;&quot;dollar_ex&#92;&quot;:3.8,&#92;&quot;dollar_price&#92;&quot;:1.18947368421053},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;NZD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;New Zealand&#92;&quot;,&#92;&quot;local_price&#92;&quot;:3.4,&#92;&quot;dollar_ex&#92;&quot;:2.01,&#92;&quot;dollar_price&#92;&quot;:1.69154228855721}]&quot;' data-total-rows='1330' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='20' data-field-types='[[&quot;date&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;currency_code&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;local_price&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;dollar_ex&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;dollar_price&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "9766e30776e90e89032e56ce6b0414c4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>&lt;opentelemetry.instrumentation.sqlalchemy.engine.EngineTracer object at 0x10bf652e0&gt;</pre>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "23:15:50.804 connect\n23:15:50.805 connect\n23:15:50.805 PRAGMA db.sqlite\n23:15:50.818 connect\n23:15:50.818 SELECT db.sqlite\n"
+        },
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "23:15:50.819 connect\n23:15:50.819 SELECT db.sqlite\n"
+        }
+      ]
+    },
+    {
+      "id": "Xref",
+      "code_hash": "8bbe5044cbb180b99ae9d3c260cb2bfd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "23:15:59.471 connect\n23:15:59.472 PRAGMA db.sqlite\n23:15:59.473 PRAGMA db.sqlite\n23:15:59.473 CREATE db.sqlite\n23:15:59.479 INSERT db.sqlite\n23:15:59.481 Succesfully inserted 1330 rows into the 'bigmac' table\n"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "0aade242996737957c41ec0a3f9bebe3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='SFPL-0' random-id='ca4e00fc-5991-9814-aae3-bad0ca0cda42'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;ARS&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Argentina&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.5,&#92;&quot;dollar_ex&#92;&quot;:1.0,&#92;&quot;dollar_price&#92;&quot;:2.5},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;AUD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Australia&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.59,&#92;&quot;dollar_ex&#92;&quot;:1.68,&#92;&quot;dollar_price&#92;&quot;:1.5416666666666698},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;BRL&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Brazil&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.95,&#92;&quot;dollar_ex&#92;&quot;:1.79,&#92;&quot;dollar_price&#92;&quot;:1.64804469273743},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CAD&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Canada&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.85,&#92;&quot;dollar_ex&#92;&quot;:1.47,&#92;&quot;dollar_price&#92;&quot;:1.93877551020408},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CHF&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Switzerland&#92;&quot;,&#92;&quot;local_price&#92;&quot;:5.9,&#92;&quot;dollar_ex&#92;&quot;:1.7,&#92;&quot;dollar_price&#92;&quot;:3.4705882352941204},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CLP&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Chile&#92;&quot;,&#92;&quot;local_price&#92;&quot;:1260.0,&#92;&quot;dollar_ex&#92;&quot;:514.0,&#92;&quot;dollar_price&#92;&quot;:2.45136186770428},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CNY&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;China&#92;&quot;,&#92;&quot;local_price&#92;&quot;:9.9,&#92;&quot;dollar_ex&#92;&quot;:8.28,&#92;&quot;dollar_price&#92;&quot;:1.19565217391304},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;CZK&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Czech Republic&#92;&quot;,&#92;&quot;local_price&#92;&quot;:54.37,&#92;&quot;dollar_ex&#92;&quot;:39.1,&#92;&quot;dollar_price&#92;&quot;:1.39053708439898},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;DKK&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Denmark&#92;&quot;,&#92;&quot;local_price&#92;&quot;:24.75,&#92;&quot;dollar_ex&#92;&quot;:8.04,&#92;&quot;dollar_price&#92;&quot;:3.07835820895522},{&#92;&quot;date&#92;&quot;:&#92;&quot;2000-04-01&#92;&quot;,&#92;&quot;currency_code&#92;&quot;:&#92;&quot;EUR&#92;&quot;,&#92;&quot;name&#92;&quot;:&#92;&quot;Euro area&#92;&quot;,&#92;&quot;local_price&#92;&quot;:2.56,&#92;&quot;dollar_ex&#92;&quot;:1.075268817,&#92;&quot;dollar_price&#92;&quot;:2.38080000045235}]&quot;' data-total-rows='10' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='20' data-field-types='[[&quot;date&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;currency_code&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;local_price&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;dollar_ex&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;dollar_price&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "23:17:08.002 connect\n23:17:08.003 connect\n23:17:08.003 select db.sqlite\n"
+        }
+      ]
+    },
+    {
+      "id": "vSlr",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
