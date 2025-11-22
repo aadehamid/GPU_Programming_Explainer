@@ -1,0 +1,71 @@
+import modal
+from dotenv import load_dotenv
+import os
+
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+# cuda_version = "12.9.1"  # should be no greater than host CUDA version
+cuda_version = "13.0.2"  # should be no greater than host CUDA version
+# flavor = "devel"  # includes full CUDA toolkit
+flavor = "cudnn-devel"  # includes full CUDA toolkit
+operating_sys = "ubuntu24.04"
+tag = f"{cuda_version}-{flavor}-{operating_sys}"
+# HF_CACHE_PATH = "/cache"
+
+
+# Image definition here:
+# Install build dependencies first before any pip installs
+image = (
+    modal.Image.from_registry(
+        f"nvidia/cuda:{tag}",
+        add_python="3.12",
+        secrets=[modal.Secret.from_name("github-secret")],
+    )
+    .entrypoint([])
+    .pip_install("GitPython")
+    .uv_pip_install("torch", "duckdb", "pandas", "rich", "marimo", "numpy")
+    .apt_install("git", "curl")
+    .run_commands("rm -rf /home/GPU_Programming_Explainer")
+    .run_commands(
+        "cd /home && git clone https://github.com/aadehamid/GPU_Programming_Explainer.git"
+    )
+    .run_commands(
+        "cd /home/GPU_Programming_Explainer &&  git remote set-url origin https://$GITHUB_TOKEN@github.com/aadehamid/GPU_Programming_Explainer.git"
+    )
+    .run_commands("git config --global user.name 'aadehamid'")
+    .run_commands('git config --global user.email "aadehamid@gmail.com"')
+    .run_commands("curl -LsSf https://astral.sh/uv/install.sh | sh")
+    .run_commands(
+        "cd /home && /root/.local/bin/uv venv && . .venv/bin/activate && /root/.local/bin/uv pip install mojo \
+                      --index-url https://dl.modular.com/public/nightly/python/simple/ \
+                      --prerelease allow"
+    )
+)
+# .run_commands(
+#     "if [ ! -d './GPU_Programming_Explainer' ]; then git clone https://github.com/aadehamid/GPU_Programming_Explainer.git; fi"
+# )
+
+app = modal.App("CUDA-images")
+
+
+@app.function(
+    image=image, secrets=[modal.Secret.from_name("github-secret")]
+)  # You need a Function object to reference the image.
+def cuda_image():
+    pass
+    # import subprocess
+    # import os
+
+    # # Configure Git with token (secrets are available at runtime)
+    # token = os.environ.get("GITHUB_TOKEN")
+    # if token:
+    #     subprocess.run(
+    #         [
+    #             "git",
+    #             "remote",
+    #             "set-url",
+    #             "origin",
+    #             f"https://{token}@github.com/aadehamid/GPU_Programming_Explainer.git",
+    #         ],
+    #         check=True,
+    #         cwd="/home/GPU_Programming_Explainer",
+    #     )
