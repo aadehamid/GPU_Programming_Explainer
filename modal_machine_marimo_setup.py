@@ -39,8 +39,10 @@ app._unparsable_cell(
 def _(modal):
     # Image definitions
 
-    cuda_version = "12.8.1"  # should be no greater than host CUDA version
-    flavor = "devel"  # includes full CUDA toolkit
+    # cuda_version = "12.8.1"  # should be no greater than host CUDA version
+    cuda_version = "13.0.2"  # should be no greater than host CUDA version
+    # flavor = "devel"  # includes full CUDA toolkit
+    flavor = "cudnn-devel"  # includes full CUDA toolkit
     operating_sys = "ubuntu24.04"
     tag = f"{cuda_version}-{flavor}-{operating_sys}"
     # HF_CACHE_PATH = "/cache"
@@ -57,8 +59,8 @@ def _(modal):
         .run_commands(
             "uv init && uv venv && source .venv/bin/activate && uv pip install mojo \
                           --index-url https://dl.modular.com/public/nightly/python/simple/ \
-                          --prerelease allow"
-        )
+                          --prerelease allow")
+        .uv_pip_install("torch", "duckdb", "pandas", "rich", "marimo", "numpy")
         .run_commands("rm -rf /root/GPU_Programming_Explainer")
         .run_commands("if [ ! -d 'GPU_Programming_Explainer' ]; then git clone https://github.com/aadehamid/GPU_Programming_Explainer.git; fi")
         .run_commands("cd /root/GPU_Programming_Explainer")
