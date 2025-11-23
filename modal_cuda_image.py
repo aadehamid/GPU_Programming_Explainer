@@ -1,6 +1,7 @@
+import os
+
 import modal
 from dotenv import load_dotenv
-import os
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 cuda_version = "13.0.2"  # should be no greater than host CUDA version
@@ -33,6 +34,10 @@ image = (
         "cd /home && /root/.local/bin/uv venv && . .venv/bin/activate && /root/.local/bin/uv pip install mojo \
                       --index-url https://dl.modular.com/public/nightly/python/simple/ \
                       --prerelease allow"
+    )
+    .add_local_dir(
+        "/Users/hamidadesokan/src/tries/2025-11-23-tryCudaShareMemory",
+        remote_path="/home/tryExperiments",
     )
 )
 
