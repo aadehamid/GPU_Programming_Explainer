@@ -15,7 +15,7 @@ __global__ void staticSharedExample() {
     __shared__ float tile[32];
 
     int tid = threadIdx.x;  // Fixed typo here
-    tile[tid] = tid;
+    tile[tid] = tid * 2;
     __syncthreads();
 
     if (tid == 0) {
