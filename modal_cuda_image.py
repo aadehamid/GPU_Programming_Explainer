@@ -35,11 +35,14 @@ image = (
                       --index-url https://dl.modular.com/public/nightly/python/simple/ \
                       --prerelease allow"
     )
-    .add_local_dir(
-        "/Users/hamidadesokan/src/tries/2025-11-23-tryCudaShareMemory",
-        remote_path="/home/tryExperiments",
-    )
 )
+
+# Add local files after all commands to prevent them from being removed
+# image = image.add_local_dir(
+#     "/Users/hamidadesokan/src/tries/2025-11-23-tryCudaShareMemory",
+#     remote_path="/home/2025-11-23-tryCudaShareMemory",
+#     copy=True,  # Copy files into the image layer instead of mounting at runtime
+# )
 
 app = modal.App("CUDA-images")
 
