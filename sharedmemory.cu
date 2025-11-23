@@ -11,7 +11,7 @@
     }\
 }
 
-__global__ void staticSharedExample() {
+__global__ void staticSharedExample(float* output) {
     __shared__ float tile[32];
 
     int tid = threadIdx.x;  // Fixed typo here
@@ -27,6 +27,10 @@ __global__ void staticSharedExample() {
             printf("%5d | %5.0f\n", i, tile[i]);
         }
     }
+
+    // Copy shared memory back to global memory
+    // so the host can see it
+    output[tid] = tile[tid];
 }
 
 int main() {
@@ -34,14 +38,32 @@ int main() {
     dim3 threadsPerBlock(WIDTH, 1, 1);
     dim3 blocksPerGrid(1, 1, 1);
 
-    // Launch kernel with error checking
-    staticSharedExample<<<blocksPerGrid, threadsPerBlock>>>();
+    float* d_out;
+    float* h_out = new float[WIDTH];  // Allocate host memory for the output
     
+    // Allocate device memory
+    CHECK_CUDA(cudaMalloc(&d_out, WIDTH * sizeof(float)));
+
+    // Launch kernel with error checking
+    staticSharedExample<<<blocksPerGrid, threadsPerBlock>>>(d_out);
     // Check for kernel launch errors
     CHECK_CUDA(cudaGetLastError());
     
     // Synchronize and check for errors
     CHECK_CUDA(cudaDeviceSynchronize());
-
+    
+    // Copy results back to host
+    CHECK_CUDA(cudaMemcpy(h_out, d_out, WIDTH * sizeof(float), cudaMemcpyDeviceToHost));
+    
+    // Print results from host
+    std::cout << "Results from device:" << std::endl;
+    for (int i = 0; i < WIDTH; ++i) {
+        std::cout << "h_out[" << i << "] = " << h_out[i] << std::endl;
+    }
+    
+    // Clean up
+    delete[] h_out;
+    CHECK_CUDA(cudaFree(d_out));
+    
     return 0;
 }
