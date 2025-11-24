@@ -3,6 +3,7 @@
 #include <vector>
 #include <random>
 #include <iomanip>
+#include <algorithm>
 
 // Error checking macro for CUDA calls
 #define CHECK_CUDA(call) {\
