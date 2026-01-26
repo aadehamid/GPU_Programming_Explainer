@@ -1,5 +1,4 @@
 import os
-
 import modal
 from dotenv import load_dotenv
 
@@ -17,18 +16,9 @@ image = (
         secrets=[modal.Secret.from_name("github-secret")],
     )
     .entrypoint([])
-    .pip_install("GitPython", force_build=True)
+    .pip_install("GitPython")
     .uv_pip_install("torch", "duckdb", "pandas", "rich", "marimo", "numpy")
-    .apt_install("git", "curl", "wget", "sudo")
-    .run_commands("apt update && apt upgrade -y")
-    .run_commands("wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin") # install cudakit 13.1
-    .run_commands("sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600")
-    .run_commands("wget https://developer.download.nvidia.com/compute/cuda/13.1.0/local_installers/cuda-repo-ubuntu2404-13-1-local_13.1.0-590.44.01-1_amd64.deb")
-    .run_commands("sudo dpkg -i cuda-repo-ubuntu2404-13-1-local_13.1.0-590.44.01-1_amd64.deb")
-    .run_commands("sudo cp /var/cuda-repo-ubuntu2404-13-1-local/cuda-*-keyring.gpg /usr/share/keyrings/")
-    .run_commands("sudo apt-get update")
-    .run_commands("sudo apt-get -y install cuda-toolkit-13-1") # End install cudakit 13.1
-    .pip_install("cuda-tile", force_build=True)
+    .apt_install("git", "curl", "openssh-server", "sudo")
     .run_commands("rm -rf /home/GPU_Programming_Explainer")
     .run_commands(
         "cd /home && git clone https://github.com/aadehamid/GPU_Programming_Explainer.git"
@@ -46,18 +36,63 @@ image = (
     )
 )
 
-# Add local files after all commands to prevent them from being removed
-# image = image.add_local_dir(
-#     "/Users/hamidadesokan/src/tries/2025-11-23-tryCudaShareMemory",
-#     remote_path="/home/2025-11-23-tryCudaShareMemory",
-#     copy=True,  # Copy files into the image layer instead of mounting at runtime
-# )
-
 app = modal.App("CUDA-images")
 
 
 @app.function(
-    image=image, secrets=[modal.Secret.from_name("github-secret")], gpu="B200"
+    image=image, secrets=[modal.Secret.from_name("github-secret")]
 )  # You need a Function object to reference the image.
 def cuda_image():
     pass
+
+
+@app.function(
+    image=image,
+    secrets=[modal.Secret.from_name("github-secret")],
+    gpu="T4",  # or "A10G", "A100", etc.
+    cpu=8,
+    memory=32768,
+    timeout=86400,  # 24 hours
+)
+def dev_shell():
+    """Interactive development environment with SSH access"""
+    import subprocess
+    import time
+    
+    print("Development environment ready!")
+    print(f"Working directory: {os.getcwd()}")
+    
+    # Keep the container running
+    while True:
+        time.sleep(60)
+
+
+# For CLion/IDE integration via SSH tunnel
+@app.function(
+    image=image,
+    secrets=[modal.Secret.from_name("github-secret")],
+    gpu="T4",
+    cpu=8,
+    memory=32768,
+    timeout=86400,
+)
+def dev_with_tunnel():
+    """Development environment with SSH tunnel for IDE integration"""
+    import subprocess
+    import time
+    
+    # Start SSH service
+    subprocess.run(["service", "ssh", "start"], check=False)
+    
+    print("=" * 60)
+    print("Development environment ready with SSH tunnel!")
+    print(f"Working directory: {os.getcwd()}")
+    print("=" * 60)
+    print("\nTo connect from CLion:")
+    print("1. Run: modal container exec <container-id> -- /bin/bash")
+    print("2. In CLion, configure Remote Development via SSH")
+    print("=" * 60)
+    
+    # Keep container alive
+    while True:
+        time.sleep(60)

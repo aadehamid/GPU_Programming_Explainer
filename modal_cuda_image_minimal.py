@@ -17,12 +17,11 @@ image = (
         secrets=[modal.Secret.from_name("github-secret")],
     )
     .entrypoint([])
-    .pip_install("GitPython")
-    .uv_pip_install("torch", "pandas", "numpy")
-    # Install Neovim dependencies
+    .uv_pip_install("torch", "numpy")
+    # Install development tools
     .apt_install(
         "git", "curl", "make", "gcc", "g++", "ripgrep", "fd-find", 
-        "unzip", "gzip", "wget", "build-essential"
+        "build-essential"
     )
     # Install Neovim
     .run_commands(
@@ -33,17 +32,6 @@ image = (
     .run_commands("tar -C /opt -xzf nvim-linux-x86_64.tar.gz")
     .run_commands("ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim")
     .run_commands("rm nvim-linux-x86_64.tar.gz")
-    # Clone GPU Programming Explainer project
-    .run_commands("rm -rf /home/GPU_Programming_Explainer")
-    .run_commands(
-        "cd /home && git clone https://github.com/aadehamid/GPU_Programming_Explainer.git"
-    )
-    .run_commands(
-        "cd /home/GPU_Programming_Explainer &&  git remote set-url origin https://$GITHUB_TOKEN@github.com/aadehamid/GPU_Programming_Explainer.git"
-    )
-    # Git configuration
-    .run_commands("git config --global user.name 'aadehamid'")
-    .run_commands('git config --global user.email "aadehamid@gmail.com"')
     # Install uv and Mojo
     .run_commands("curl -LsSf https://astral.sh/uv/install.sh | sh")
     .run_commands(
@@ -53,14 +41,7 @@ image = (
     )
 )
 
-# Add local files after all commands to prevent them from being removed
-# image = image.add_local_dir(
-#     "/Users/hamidadesokan/src/tries/2025-11-23-tryCudaShareMemory",
-#     remote_path="/home/2025-11-23-tryCudaShareMemory",
-#     copy=True,  # Copy files into the image layer instead of mounting at runtime
-# )
-
-app = modal.App("CUDA-images")
+app = modal.App("CUDA-images-minimal")
 
 
 @app.function(
