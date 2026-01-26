@@ -39,9 +39,17 @@ image = (
                       --index-url https://dl.modular.com/public/nightly/python/simple/ \
                       --prerelease allow"
     )
+    # Copy and run nvim setup script
+    .add_local_file("setup_nvim.sh", "/tmp/setup_nvim.sh", copy=True)
+    .run_commands("chmod +x /tmp/setup_nvim.sh")
+    .run_commands("/tmp/setup_nvim.sh")
+    .run_commands("rm /tmp/setup_nvim.sh")
 )
 
 app = modal.App("CUDA-images-minimal")
+
+# Create a persistent volume for development files
+dev_volume = modal.Volume.from_name("DevVolume", create_if_missing=True)
 
 
 @app.function(
@@ -50,7 +58,8 @@ app = modal.App("CUDA-images-minimal")
     gpu="T4",  # or "A10G", "A100", etc.
     cpu=8,
     memory=32768,
-    timeout=86400,  # 24 hours
+    timeout=1800,  # 30 minutes
+    volumes={"/workspace": dev_volume},
 )
 def dev_shell():
     """Interactive development environment with SSH access"""
@@ -60,5 +69,5 @@ def dev_shell():
     print(f"Working directory: {os.getcwd()}")
     
     # Keep the container running
-    while True:
-        time.sleep(60)
+    # while True:
+    #     time.sleep(60)
