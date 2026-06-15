@@ -37,7 +37,7 @@ int main(){
 	// for (size_t i{0}; i < (sizeof(a)/sizeof(int)); i++){
 	// 	std::cout << c[i] << " ";
 	// }
-	
+
 	int* cuda_arr1 = nullptr;
 	int* cuda_arr2 = nullptr;
 	int* cuda_arr3 = nullptr;
@@ -51,7 +51,7 @@ int main(){
 	cudaMemcpy(cuda_arr1, a, sizeof(a), cudaMemcpyHostToDevice);
 	cudaMemcpy(cuda_arr2, b, sizeof(b), cudaMemcpyHostToDevice);
 	// cudaMemcpy(cuda_arr3, c, sizeof(c), cudaMemcpyHostToDevice);
-	
+
 	vectorized<<<1,sizeof(a)/sizeof(int)>>>(cuda_arr1, cuda_arr2, cuda_arr3, sizeof(a)/sizeof(int));
 	cudaDeviceSynchronize();
 	// Copy data from GPU to CPU
